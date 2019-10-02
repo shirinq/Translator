@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Controller.DictionaryFragment">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerWord"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </androidx.recyclerview.widget.RecyclerView>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center|bottom">
+        <Button
+            android:id="@+id/discard"
+            android:layout_width="80dp"
+            android:text="@string/discard"
+            android:background="@drawable/btn_shape_mirror"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="80dp">
+
+        </Button>
+        <Button
+            android:id="@+id/done"
+            android:layout_width="80dp"
+            android:background="@drawable/btn_shape"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="80dp">
+
+        </Button>
+    </LinearLayout>
+
+
+</FrameLayout>

@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Translator</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="add">add</string>
+    <string name="delete">delete</string>
+    <string name="share">share</string>
+    <string name="search">Search</string>
+    <string name="discard">discard</string>
+</resources>
