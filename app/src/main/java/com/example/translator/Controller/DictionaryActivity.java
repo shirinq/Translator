@@ -20,4 +20,18 @@ public class DictionaryActivity extends AppCompatActivity {
             .commit();
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        invalidateOptionsMenu();
+        //super.onBackPressed();
+    }
+
+    @Override
+    public boolean onSearchRequested() {
+        Bundle appData = new Bundle();
+        appData.putBoolean(searchActivity.key, true);
+        startSearch(null, false, appData, false);
+        return true;
+    }
 }

@@ -10,6 +10,11 @@
         app:actionViewClass="android.widget.SearchView" />
 
     <item
+        android:id="@+id/search"
+        android:title="@string/search"
+        app:showAsAction="always" />
+
+    <item
         android:id="@+id/menu_add"
         android:title="@string/add" />
 

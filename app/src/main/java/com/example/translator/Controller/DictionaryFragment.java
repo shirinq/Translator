@@ -126,6 +126,15 @@ public class DictionaryFragment extends Fragment {
                 }
             });
 
+            hView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (hSelect.getVisibility() == View.GONE)
+                        return;
+                    hSelect.setChecked(!hSelect.isChecked());
+                }
+            });
+
             hSelect.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
@@ -217,7 +226,6 @@ public class DictionaryFragment extends Fragment {
     }
 
 
-
     /**
      * MENU HANDLER
      */
@@ -253,7 +261,7 @@ public class DictionaryFragment extends Fragment {
                 List<Word> temp = new ArrayList<>();
                 mWords = repository.getWordList();
                 for (Word word : mWords) {
-                    if (word.getTitle().contains(s)|| word.getTranslation().contains(s))
+                    if (word.getTitle().contains(s) || word.getTranslation().contains(s))
                         temp.add(word);
                 }
                 mWords = temp;
@@ -261,15 +269,8 @@ public class DictionaryFragment extends Fragment {
                 return false;
             }
         });
-
-        searchView.setOnCloseListener(new SearchView.OnCloseListener() {
-            @Override
-            public boolean onClose() {
-                updateUI(View.GONE);
-                return false;
-            }
-        });
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -286,6 +287,10 @@ public class DictionaryFragment extends Fragment {
             case R.id.menu_share:
                 updateUI(View.VISIBLE);
                 btnsListener(getString(R.string.share));
+                return true;
+
+            case R.id.search:
+
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -308,17 +313,17 @@ public class DictionaryFragment extends Fragment {
 
     private void btnsListener(final String text) {
         mDone.setText(text);
+
         mDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (text.equals(getString(R.string.delete))) {
                     for (Word w : selectedWords)
                         repository.deleteWord(w);
-                }
-                else if(text.equals(getString(R.string.share))){
+                } else if (text.equals(getString(R.string.share))) {
                     String textMessage = "";
                     for (Word w : selectedWords)
-                        textMessage+=(w.getTitle()+"="+w.getTranslation()+'\n');
+                        textMessage += (w.getTitle() + "=" + w.getTranslation() + '\n');
                     Intent sendIntent = new Intent();
                     sendIntent.setAction(Intent.ACTION_SEND);
                     sendIntent.putExtra(Intent.EXTRA_TEXT, textMessage);
